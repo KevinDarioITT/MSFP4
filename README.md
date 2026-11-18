@@ -2,8 +2,6 @@
 
 # Práctica 4 — Modelado y control del sistema endócrino
 
-> **Nota para el alumno:** confirma el número de práctica del título (aquí se supone la 4) y sustituye todos los marcadores **[COMPLETAR]** antes de entregar.
-
 **Docente:** Dr. Paul Antonio Valle Trujillo  
 **Correo:** paul.valle@tectijuana.edu.mx  
 **Departamento:** Ingeniería Eléctrica y Electrónica  
