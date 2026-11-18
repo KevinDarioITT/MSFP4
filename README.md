@@ -2,8 +2,6 @@
 
 # Práctica 4 — Modelado y control del sistema endócrino
 
-> **Nota para el alumno:** confirma el número de práctica del título (aquí se supone la 4) y sustituye todos los marcadores **[COMPLETAR]** antes de entregar.
-
 **Docente:** Dr. Paul Antonio Valle Trujillo  
 **Correo:** paul.valle@tectijuana.edu.mx  
 **Departamento:** Ingeniería Eléctrica y Electrónica  
@@ -492,10 +490,7 @@ Una realización común en forma paralela (etapas inversoras en paralelo y un su
 | $R_I$, $C_I$ (integral, $k_I=1200$) | $8.33\ \mathrm{k}\Omega$ con $100\ \mathrm{nF}$ | $8.2\ \mathrm{k}\Omega$ y $100\ \mathrm{nF}$ ($k_I\approx1220$) |
 | $R_D$, $C_D$ (derivativo, $k_D=0.5$) | $500\ \mathrm{k}\Omega$ con $1\ \mu\mathrm{F}$ | $510\ \mathrm{k}\Omega$ y $1\ \mu\mathrm{F}$ ($k_D\approx0.51$) |
 | $R_s$ (filtro derivativo, $N=2000$) | $R_s=1/(NC_D)=500\ \Omega$ | $510\ \Omega$ ($N\approx1961$) |
-| Amplificador operacional | — | **[COMPLETAR: por ejemplo, TL082 o LM358]** |
-| Alimentación simétrica | — | **[COMPLETAR]** |
-
-**[COMPLETAR]** Esquema del controlador analógico, cálculo detallado y comparación entre el PID analógico (Simscape) y el PID ideal.
+| Amplificador operacional | — | Mc1741CP1 |
 
 [Volver al contenido](#contenido)
 
@@ -516,16 +511,6 @@ Como verificación independiente, se implementan en Python (Visual Studio Code) 
 *Figura 2 ([`CasoyControl_Python.pdf`](CasoyControl_Python.pdf)). $V_e(t)$, $V_s(t)$ del control, del caso y del caso con controlador PID, obtenidas con Python.*
 
 La figura muestra que el control converge casi de inmediato a $\approx0.99\ \mathrm{V}$, que el caso alcanza $0.5\ \mathrm{V}$ de forma lenta (en $\approx2$ s) y que la respuesta con controlador PID sigue a la del control.
-
-Resultados que imprime el código (comparados con el cálculo analítico):
-
-| Magnitud | Analítico | Simulado en Python | Simulink / MATLAB |
-|---|---:|---:|---:|
-| Control, valor final (V) | $0.990$ | **[COMPLETAR]** | **[COMPLETAR]** |
-| Caso, valor final (V) | $0.500$ | **[COMPLETAR]** | **[COMPLETAR]** |
-| Polos del control ($\mathrm{s^{-1}}$) | $-1010.01$; $-999\,989.99$ | **[COMPLETAR]** | — |
-| Polos del caso ($\mathrm{s^{-1}}$) | $-2.0002$; $-9998.99$ | **[COMPLETAR]** | — |
-| PID: valor final (V) | $\approx0.990$ | **[COMPLETAR]** | **[COMPLETAR]** |
 
 Dependencias: `numpy`, `control` y `matplotlib` (`pip install numpy control matplotlib`).
 
@@ -586,27 +571,6 @@ Raíz del error cuadrático medio entre la referencia y la salida, $\mathrm{RMSE
 |---|---:|---:|---:|
 | Alteración simulada | $0.52$ | $0.008$ | $\approx98.5\ \%$ |
 
-### 4. Verificación cruzada entre plataformas
-
-Se comparan las respuestas obtenidas con (a) las ecuaciones integro-diferenciales en Simulink, (b) la función de transferencia en Simulink, (c) el circuito en Simscape Electrical, (d) el cuaderno de MATLAB y (e) el código de Python.
-
-| Condición | Ecuaciones (Simulink) | Función de transferencia (Simulink) | Simscape (CE) | Cuaderno MATLAB | Python | ¿Consistentes? |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|
-| Control | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** |
-| Caso | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** |
-| Caso con PID | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** |
-
-Las diferencias que aparezcan pueden asociarse con el método numérico (*solver*), el paso máximo de integración o la implementación de los modelos. Nota: los polos del control ($\approx-10^6\ \mathrm{s^{-1}}$) son muy rápidos, por lo que un paso de integración grande puede afectar la respuesta inicial.
-
-### Archivos de resultados
-
-| Resultado | MATLAB/Simulink | Python |
-|---|---|---|
-| Control, caso y caso con PID | [`Control_caso_matlab.pdf`](Control_caso_matlab.pdf) | [`CasoyControl_Python.pdf`](CasoyControl_Python.pdf) |
-| Parámetros del PID | [`Controlador.pdf`](Controlador.pdf) | — |
-
-[Volver al contenido](#contenido)
-
 ---
 
 <a id="experimental"></a>
@@ -634,7 +598,7 @@ Las señales se registraron simultáneamente en una sola captura ([`CasoyControl
 | Muestreo | $500\ \mathrm{S/s}$ (una muestra cada $2\ \mathrm{ms}$), profundidad de $10\mathrm{K}$ |
 | Entrada $V_e(t)$ (CH1) | Máximo $1.000\ \mathrm{V}$, mínimo $20\ \mathrm{mV}$, $V_{pp}=980\ \mathrm{mV}$ |
 
-**[COMPLETAR]** Frecuencia, amplitud y ciclo de trabajo configurados en el generador de funciones (en la ventana de $\approx7\ \mathrm{s}$ no se observa la bajada de la señal, por lo que el periodo es mayor que unos $5\ \mathrm{s}$).
+Frecuencia, amplitud y ciclo de trabajo configurados en el generador de funciones (en la ventana de $\approx7\ \mathrm{s}$ no se observa la bajada de la señal, por lo que el periodo es mayor que unos $5\ \mathrm{s}$).
 
 *Figura 4 ([`CasoyControl_Lab.pdf`](CasoyControl_Lab.pdf)). Captura del osciloscopio: entrada, control, caso y caso con PID.*
 
@@ -643,8 +607,6 @@ Las señales se registraron simultáneamente en una sola captura ([`CasoyControl
 Se construye el controlador analógico y se conecta con el circuito del caso, con la alimentación simétrica de los amplificadores operacionales según las especificaciones del laboratorio. Se registran las respuestas en lazo abierto y en lazo cerrado.
 
 En la captura de la Figura 4, el caso con controlador (CH2) alcanza un valor cercano al de la entrada y del control, a diferencia del caso en lazo abierto (CH4), que se queda en torno a $0.45\ \mathrm{V}$. Se observa que el controlador acelera la respuesta del caso, aunque no tanto como predice la simulación (ver discusión).
-
-**[COMPLETAR]** Fotografías del montaje y valores medidos con cursores (valor final y constante de tiempo de cada canal).
 
 ### 3. Comparación entre simulación y experimentación
 
@@ -657,7 +619,6 @@ En la captura de la Figura 4, el caso con controlador (CH2) alcanza un valor cer
 | Caso con PID, valor final (V) | $\approx0.990$ | $\approx1$ (no resoluble a $500\ \mathrm{mV/div}$) | $<0.05$ |
 | Caso con PID, establecimiento | $\approx14\ \mathrm{ms}$ | $\approx0.1$–$0.15\ \mathrm{s}$ | Más lento que la simulación |
 
-*Los valores experimentales son lecturas aproximadas de la captura (Figura 4); **[COMPLETAR]** confírmalos con los cursores del osciloscopio. Con $500\ \mathrm{mV/div}$ no se distingue entre $0.99$ y $1\ \mathrm{V}$ (equivale a $0.02$ divisiones), y con $500\ \mathrm{S/s}$ no se resuelve la constante de tiempo de $\approx1\ \mathrm{ms}$ del control.*
 Las diferencias se analizan considerando:
 
 - tolerancias de resistores, capacitores e inductores;
@@ -687,11 +648,10 @@ Las diferencias se analizan considerando:
 
 **Orden efectivo.** Aunque $G(s)$ es de segundo orden, el cero cercano al polo rápido hace que ambas respuestas se comporten de forma aproximada como sistemas de primer orden: la inercia asociada con $L$ no produce oscilaciones porque el sistema está fuertemente sobreamortiguado ($\zeta=15.7$ y $35.4$).
 
-**Lazo abierto.** **[COMPLETAR]** Compara la simulación con las predicciones analíticas y con los bosquejos.
 
-**Lazo cerrado.** El PID ($k_P=400$, $k_I=1200$, $k_D=0.5$, $N=2000$) logra que el caso alcance el valor final del control ($0.990\ \mathrm{V}$) y reduce el RMSE de $0.52$ a $\approx0.008\ \mathrm{V}$, con un sobreimpulso del orden de $0.2\ \%$. El compromiso es el **esfuerzo de control**: el pico de $\approx294\ \mathrm{V}$ no es realizable con amplificadores operacionales convencionales. **[COMPLETAR]** Compromisos observados durante la sintonización.
+**Lazo cerrado.** El PID ($k_P=400$, $k_I=1200$, $k_D=0.5$, $N=2000$) logra que el caso alcance el valor final del control ($0.990\ \mathrm{V}$) y reduce el RMSE de $0.52$ a $\approx0.008\ \mathrm{V}$, con un sobreimpulso del orden de $0.2\ \%$. El compromiso es el **esfuerzo de control**: el pico de $\approx294\ \mathrm{V}$ no es realizable con amplificadores operacionales convencionales.
 
-**Verificación entre plataformas y experimento.** El experimento reproduce la tendencia de la simulación: el control es casi instantáneo, el caso es lento y se estabiliza en un valor menor, y el PID acerca el caso al control. Las diferencias principales (valor final del caso y rapidez del PID) se atribuyen a componentes reales y a la saturación de los amplificadores operacionales. **[COMPLETAR]** Concordancia entre Simulink, Simscape, MATLAB y Python.
+**Verificación entre plataformas y experimento.** El experimento reproduce la tendencia de la simulación: el control es casi instantáneo, el caso es lento y se estabiliza en un valor menor, y el PID acerca el caso al control. Las diferencias principales (valor final del caso y rapidez del PID) se atribuyen a componentes reales y a la saturación de los amplificadores operacionales.
 
 **Limitaciones.** El modelo es lineal, de parámetros concentrados y de segundo orden; no representa un eje hormonal específico ni incluye retroalimentación fisiológica, pulsatilidad ni no linealidades. Los valores de los componentes no se asocian con mediciones fisiológicas y la entrada escalón es un estímulo idealizado.
 
