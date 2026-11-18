@@ -192,8 +192,6 @@ A partir de la descripción funcional, el circuito tiene una **rama principal** 
 
 Debido a la presencia de dos elementos independientes de almacenamiento de energía, $C$ y $L$, el circuito es un sistema dinámico de **segundo orden**.
 
-**[COMPLETAR]** Inserta aquí tu esquema del circuito (por ejemplo, el dibujo del cuaderno de prácticas o una captura de Simscape) con la entrada $V_e(t)$, la salida $V_s(t)$, los elementos, $F_e(t)$, $F_s(t)$, los nodos y la referencia.
-
 ### Variables y parámetros
 
 | Símbolo | Equivalente eléctrico | Interpretación fisiológica |
